@@ -30,11 +30,11 @@ function App() {
     <div className="App">
       <div className="shapegrid-shell">
         <ShapeGrid
-          speed={0.5}
+          speed={0}
           squareSize={40}
           direction="diagonal"
-          borderColor="#050505"
-          hoverFillColor="#000000"
+          borderColor="rgba(34, 110, 255, 0.45)"
+          hoverFillColor="rgba(255, 210, 63, 0.55)"
           shape="square"
           hoverTrailAmount={0}
         />

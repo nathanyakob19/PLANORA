@@ -57,6 +57,13 @@ const managementCards = [
 function HomePage() {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % slides.length);
@@ -67,7 +74,7 @@ function HomePage() {
 
   return (
     <main className="homepage">
-      <section className="homepage-banner" id="home">
+      <section className="homepage-banner">
         <div
           className="homepage-banner__track"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
@@ -79,12 +86,14 @@ function HomePage() {
                 <h1>{slide.title}</h1>
                 <p>{slide.description}</p>
                 <div className="homepage-banner__actions">
-                  <button type="button" className="homepage-banner__button homepage-banner__button--primary">
-                    Create Event
+                  <button
+                    type="button"
+                    className="homepage-banner__button homepage-banner__button--primary"
+                    onClick={() => scrollToSection('management')}
+                  >
+                    Get started
                   </button>
-                  <a href="#events" className="homepage-banner__button homepage-banner__button--ghost">
-                    View Events
-                  </a>
+              
                 </div>
               </div>
               <aside className="homepage-banner__panel">
@@ -108,7 +117,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="management-section">
+      <section className="management-section" id="management">
         <div className="management-section__intro">
           <span className="management-section__eyebrow">How we manage events</span>
           <h2>Everything your team needs after the hero section, in a clean card layout.</h2>
@@ -126,6 +135,19 @@ function HomePage() {
           ))}
         </div>
       </section>
+
+      <footer className="homepage-footer">
+        <div>
+          <strong>Planora</strong>
+          <p>Simple event planning, scheduling, and coordination for modern teams.</p>
+        </div>
+        <div className="homepage-footer__links">
+          <a href="/">Home</a>
+          <a href="/">Events</a>
+          <a href="/">Schedule</a>
+          <a href="/">Contact</a>
+        </div>
+      </footer>
     </main>
   );
 }

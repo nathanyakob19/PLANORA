@@ -24,11 +24,11 @@ function ContactPage() {
         <div className="contact-card">
           <div>
             <strong>Call us</strong>
-            <p>+91 98765 43210</p>
+            <p>+91 9833825682</p>
           </div>
           <div>
             <strong>Email</strong>
-            <p>hello@planoraevents.com</p>
+            <p>planora3045@gamil.com</p>
           </div>
           <div>
             <strong>Office hours</strong>

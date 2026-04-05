@@ -88,6 +88,7 @@ function ShapeGrid({
       const canvasHeight = canvas.height / (window.devicePixelRatio || 1);
 
       ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      ctx.lineWidth = 0.55;
 
       if (isHex) {
         const colShift = Math.floor(gridOffset.current.x / hexHoriz);
@@ -239,7 +240,7 @@ function ShapeGrid({
     };
 
     const updateAnimation = () => {
-      const effectiveSpeed = Math.max(speed, 0.1);
+      const effectiveSpeed = Math.max(speed, 0);
       const wrapX = isHex ? hexHoriz * 2 : squareSize;
       const wrapY = isHex ? hexVert : isTri ? squareSize * 2 : squareSize;
 
