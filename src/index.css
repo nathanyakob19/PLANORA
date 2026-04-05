@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Stardom';
+  src: url('./Stardom_Complete/Fonts/WEB/fonts/Stardom-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: 'Stardom', serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

@@ -1,0 +1,105 @@
+@font-face {
+  font-family: 'BespokeStencil';
+  src: url('./BespokeStencil_Complete/Fonts/WEB/fonts/BespokeStencil-MediumItalic.woff2')
+    format('woff2');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'BespokeStencil';
+  src: url('./BespokeStencil_Complete/Fonts/WEB/fonts/BespokeStencil-ExtraboldItalic.woff2')
+    format('woff2');
+  font-weight: 800;
+  font-style: italic;
+}
+
+.App {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #e7e2e2;
+  position: relative;
+}
+
+.shapegrid-shell {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.glass-navbar {
+  position: fixed;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.25rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.glass-navbar__brand,
+.glass-navbar__links a {
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
+  letter-spacing: 0.06em;
+}
+
+.glass-navbar__brand {
+  font-family: 'BespokeStencil', sans-serif;
+  font-size: calc(0.95rem + 10px);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.1em;
+}
+
+.glass-navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.glass-navbar__links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.glass-navbar__links a.is-active {
+  color: #fff;
+}
+
+.glass-navbar__links a:hover,
+.glass-navbar__brand:hover {
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .glass-navbar {
+    width: calc(100vw - 1.5rem);
+    top: 1rem;
+    gap: 1rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .glass-navbar__links {
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .glass-navbar__brand {
+    font-size: clamp(1.15rem, 4.8vw, 1.45rem);
+  }
+
+  .glass-navbar__links a {
+    font-size: 0.82rem;
+  }
+}
