@@ -1,152 +1,113 @@
-import { useEffect, useState } from 'react';
 import './HomePage.css';
 
-const slides = [
+const services = [
   {
-    eyebrow: 'Event planning',
-    title: 'Run polished events with one flexible planning workspace.',
+    title: 'Birthday Parties',
     description:
-      'Coordinate schedules, vendors, guest details, and team tasks in one place without losing momentum.',
-    accent: 'Live operations',
-    statLabel: 'Active event boards',
-    statValue: '128+'
+      'Theme planning, decor, guest movement, entertainment cues, and celebration moments managed with polish.'
   },
   {
-    eyebrow: 'Team alignment',
-    title: 'Keep timelines, approvals, and logistics moving in one flow.',
+    title: 'Weddings',
     description:
-      'Move between speakers, venue tasks, production notes, and guest updates without bouncing across tools.',
-    accent: 'Shared command',
-    statLabel: 'Real-time updates',
-    statValue: '24/7'
+      'Ceremony flow, hospitality, vendor timing, decor teams, guest care, and multi-day coordination.'
   },
   {
-    eyebrow: 'Clear execution',
-    title: 'Turn scattered event ideas into a calm, focused control center.',
+    title: 'Corporate Events',
     description:
-      'Give every launch, conference, or celebration a clear structure with flexible modules and fast collaboration.',
-    accent: 'Confident delivery',
-    statLabel: 'Hours saved weekly',
-    statValue: '18h'
+      'Launches, meetings, brand activations, stage direction, scheduling, and on-ground production control.'
+  },
+  {
+    title: 'Baby Shower',
+    description:
+      'Soft, detail-led planning for family celebrations, decor, games, gifting flow, and guest experience.'
+  },
+  {
+    title: 'Brand Promotion',
+    description:
+      'Visibility-focused event planning for promotions, audience interaction, partner zones, and brand recall.'
+  },
+  {
+    title: 'Decoration & Anchoring',
+    description:
+      'Event styling, thematic setup, hosting support, announcements, and smooth transitions through the program.'
   }
 ];
 
-const managementCards = [
-  {
-    title: 'Event Scheduling',
-    description:
-      'Build timelines for ceremonies, sessions, launches, and production moments without losing track of dependencies.'
-  },
-  {
-    title: 'Vendor Coordination',
-    description:
-      'Keep decorators, caterers, venues, technical crews, and partners aligned with one shared planning view.'
-  },
-  {
-    title: 'Guest Experience',
-    description:
-      'Track invites, seating, check-in flow, and special requests so every attendee interaction feels well managed.'
-  },
-  {
-    title: 'Team Task Control',
-    description:
-      'Assign responsibilities, follow progress, and resolve blockers quickly across organizers, volunteers, and leads.'
-  }
+const metrics = [
+  ['120+', 'event boards structured'],
+  ['18h', 'saved per production week'],
+  ['24/7', 'live coordination rhythm']
 ];
 
 function HomePage() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const scrollToSection = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (!section) return;
-
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
-  useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % slides.length);
-    }, 4200);
-
-    return () => window.clearInterval(intervalId);
-  }, []);
-
   return (
-    <main className="homepage">
-      <section className="homepage-banner">
-        <div
-          className="homepage-banner__track"
-          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-        >
-          {slides.map((slide) => (
-            <section key={slide.title} className="homepage-banner__slide">
-              <div className="homepage-banner__content">
-                <span className="homepage-banner__eyebrow">{slide.eyebrow}</span>
-                <h1>{slide.title}</h1>
-                <p>{slide.description}</p>
-                <div className="homepage-banner__actions">
-                  <button
-                    type="button"
-                    className="homepage-banner__button homepage-banner__button--primary"
-                    onClick={() => scrollToSection('management')}
-                  >
-                    Get started
-                  </button>
-              
-                </div>
-              </div>
-              <aside className="homepage-banner__panel">
-                <span className="homepage-banner__panel-label">{slide.accent}</span>
-                <strong>{slide.statValue}</strong>
-                <p>{slide.statLabel}</p>
-              </aside>
-            </section>
-          ))}
+    <main className="site-main">
+      <section className="hero-section">
+        <div className="hero-copy">
+          <p className="eyebrow">Event direction and execution</p>
+          <h1>
+            Where plans align perfectly<span className="headline-period" aria-hidden="true">.</span>
+          </h1>
+          <p className="hero-copy__lead">
+            Planora plans birthdays, weddings, showers, corporate events, brand promotions, decor,
+            and anchoring with a premium black-and-off-white visual identity.
+          </p>
+          <div className="hero-actions">
+            <a href="#events" className="button button--dark">
+              View Events
+            </a>
+            <a href="#contact" className="button button--light">
+              Start Planning
+            </a>
+          </div>
         </div>
-        <div className="homepage-banner__dots" aria-label="Banner navigation">
-          {slides.map((slide, index) => (
-            <button
-              key={slide.title}
-              type="button"
-              className={`homepage-banner__dot${index === activeIndex ? ' is-active' : ''}`}
-              aria-label={`Show slide ${index + 1}`}
-              onClick={() => setActiveIndex(index)}
-            />
-          ))}
-        </div>
+        <figure className="hero-visual">
+          <img src="/planora-hero.png" alt="Black and off-white event planning materials" />
+          <figcaption>
+            <span>01</span>
+            <p>Monochrome planning boards for precise event movement.</p>
+          </figcaption>
+        </figure>
       </section>
 
-      <section className="management-section" id="management">
-        <div className="management-section__intro">
-          <span className="management-section__eyebrow">How we manage events</span>
-          <h2>Everything your team needs after the hero section, in a clean card layout.</h2>
-          <p>
-            Planora helps event teams organize operations from first brief to final execution with clear,
-            collaborative workflows.
-          </p>
+      <section className="metrics-strip" aria-label="Planora performance highlights">
+        {metrics.map(([value, label]) => (
+          <div key={label} className="metric">
+            <strong>{value}</strong>
+            <span>{label}</span>
+          </div>
+        ))}
+      </section>
+
+      <section className="services-section" id="management">
+        <div className="section-heading">
+          <p className="eyebrow">What replaces the noise</p>
+          <h2>Services built around celebration, presence, and clean execution.</h2>
         </div>
-        <div className="management-grid">
-          {managementCards.map((card) => (
-            <article key={card.title} className="management-card">
-              <h3>{card.title}</h3>
-              <p>{card.description}</p>
+        <div className="service-grid">
+          {services.map((service, index) => (
+            <article key={service.title} className="service-card">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <footer className="homepage-footer">
+      <footer className="site-footer">
         <div>
-          <strong>Planora</strong>
-          <p>Simple event planning, scheduling, and coordination for modern teams.</p>
+          <img src="/planora-logo.png" alt="" />
+          <p>
+            Planora provides event planning, decoration, anchoring, guest flow, and coordination
+            for personal celebrations and business events.
+          </p>
         </div>
-        <div className="homepage-footer__links">
-          <a href="/">Home</a>
-          <a href="/">Events</a>
-          <a href="/">Schedule</a>
-          <a href="/">Contact</a>
-        </div>
+        <nav aria-label="Footer">
+          <a href="#home">Home</a>
+          <a href="#events">Events</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </footer>
     </main>
   );

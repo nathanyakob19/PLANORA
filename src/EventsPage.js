@@ -1,99 +1,81 @@
 import './HomePage.css';
 
-const completedEvents = [
+const serviceHighlights = [
   {
-    name: 'Visionary Product Summit 2025',
-    type: 'Corporate launch',
-    year: '2025',
+    title: 'Weddings & Celebrations',
     detail:
-      'Managed stage flow, speaker transitions, registration, vendor timing, and live production across a full-day summit.'
+      'Planora manages wedding flow, birthday parties, baby showers, decor teams, hospitality, and guest movement.'
   },
   {
-    name: 'Royal Wedding Weekend',
-    type: 'Luxury celebration',
-    year: '2024',
+    title: 'Corporate Events',
     detail:
-      'Coordinated multi-day hospitality, guest transport, decor teams, catering windows, and ceremony sequencing.'
+      'Launches, meetings, office celebrations, stage plans, schedules, and production details stay organized.'
   },
   {
-    name: 'Creators Expo Night',
-    type: 'Community event',
-    year: '2024',
+    title: 'Brand Promotion',
     detail:
-      'Handled exhibitor booths, attendee check-in, sponsor zones, lighting cues, and engagement planning end to end.'
+      'Promotional events are shaped around visibility, audience interaction, partner areas, and brand recall.'
   }
 ];
 
-const eventDetailPoints = [
-  'Pre-event planning with timelines, task allocation, and vendor scheduling',
-  'On-ground execution support for entry flow, stage management, and guest coordination',
-  'Post-event wrap-up including debrief notes, billing checkpoints, and operational review'
+const processSteps = [
+  'Map the event brief into owners, dates, dependencies, vendors, and decisions.',
+  'Run pre-event rehearsals with stage cues, guest routes, entry flow, and contingency notes.',
+  'Close with debriefs, billing checkpoints, performance notes, and the next planning board.'
 ];
 
 function EventsPage() {
   return (
-    <main className="page page--events" id="events">
-      <section className="page-hero">
-        <span className="management-section__eyebrow">Events page</span>
-        <h1>Projects we have delivered with full planning and execution detail.</h1>
+    <main className="site-main page-main">
+      <section className="page-intro">
+        <p className="eyebrow">Events</p>
+        <h1>Event planning services with the operational detail left visible.</h1>
         <p>
-          Explore the events we have managed and the workflow structure we use to keep production, guest
-          experience, and coordination under control.
+          Planora supports personal celebrations and business events with planning, coordination,
+          decoration, anchoring, and live execution support.
         </p>
       </section>
 
-      <section className="events-section events-section--page">
-        <div className="events-section__intro">
-          <span className="management-section__eyebrow">Events we have done</span>
-          <h2>Recent events managed across corporate, luxury, and community formats.</h2>
-          <p>
-            Each project below reflects our approach to scheduling, execution support, vendor handling,
-            and attendee experience.
-          </p>
-        </div>
+      <section className="event-list" aria-label="Planora event planning services">
+        {serviceHighlights.map((event) => (
+          <article key={event.title} className="event-row">
+            <div>
+              <span className="event-row__meta">Planora service</span>
+              <h2>{event.title}</h2>
+            </div>
+            <p>{event.detail}</p>
+          </article>
+        ))}
+      </section>
 
-        <div className="events-grid">
-          {completedEvents.map((event) => (
-            <article key={event.name} className="event-card">
-              <span className="event-card__meta">
-                {event.type} . {event.year}
-              </span>
-              <h3>{event.name}</h3>
-              <p>{event.detail}</p>
-            </article>
+      <section className="process-panel">
+        <div className="section-heading">
+          <p className="eyebrow">Method</p>
+          <h2>From brief to live floor, every step has an owner.</h2>
+        </div>
+        <div className="process-list">
+          {processSteps.map((step, index) => (
+            <div key={step} className="process-item">
+              <span>{String(index + 1).padStart(2, '0')}</span>
+              <p>{step}</p>
+            </div>
           ))}
-        </div>
-
-        <div className="event-detail-panel">
-          <div className="event-detail-panel__content">
-            <span className="management-section__eyebrow">Detailed view</span>
-            <h3>How we manage an event from planning table to on-ground delivery.</h3>
-            <p>
-              We keep every event on one operational path so the team can see ownership, timing, and
-              next actions without confusion.
-            </p>
-          </div>
-          <div className="event-detail-panel__list">
-            {eventDetailPoints.map((point) => (
-              <div key={point} className="event-detail-point">
-                <span className="event-detail-point__index" />
-                <p>{point}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
-      <footer className="homepage-footer">
+      <footer className="site-footer">
         <div>
-          <strong>Planora</strong>
-          <p>Event planning, coordination, and delivery for teams that need clarity.</p>
+          <img src="/planora-logo.png" alt="" />
+          <p>
+            Book Planora for weddings, birthdays, baby showers, corporate events, brand
+            promotions, decoration, and anchoring.
+          </p>
         </div>
-        <div className="homepage-footer__links">
+        <nav aria-label="Footer">
           <a href="#home">Home</a>
           <a href="#events">Events</a>
           <a href="#contact">Contact</a>
-        </div>
+        </nav>
       </footer>
     </main>
   );
